@@ -1,0 +1,110 @@
+/* ✅ Scoped container (use unique parent class for login page) */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+  font-family: "Poppins", sans-serif;
+  padding: 20px;
+}
+
+/* 🧾 Login container */
+.login-page .login-container {
+  background-color: #ffffff;
+  padding: 45px 40px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 18px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  animation: slideIn 0.8s ease;
+}
+
+.login-page .login-container:hover {
+  transform: translateY(-5px);
+}
+
+/* ✨ Heading */
+.login-page .login-container h2 {
+  color: #333;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+/* 📋 Form styling */
+.login-page .login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: left;
+}
+
+/* 🧠 Input fields */
+.login-page .login-form input {
+  padding: 14px 15px;
+  border-radius: 10px;
+  border: 1.5px solid #ccc;
+  font-size: 1rem;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.login-page .login-form input:focus {
+  border-color: #66a6ff;
+  box-shadow: 0 0 6px rgba(102, 166, 255, 0.4);
+  outline: none;
+}
+
+/* 🔘 Button */
+.login-page .login-form button {
+  background-color: #66a6ff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+.login-page .login-form button:hover {
+  background-color: #4d8fe0;
+  box-shadow: 0 5px 10px rgba(102, 166, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* 💬 Footer text */
+.login-page .login-container p {
+  margin-top: 18px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.login-page .login-container span {
+  color: #66a6ff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.login-page .login-container span:hover {
+  color: #4d8fe0;
+  text-decoration: underline;
+}
+
+/* ✨ Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

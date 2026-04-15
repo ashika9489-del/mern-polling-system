@@ -1,0 +1,211 @@
+/* Container */
+.polls-container {
+  margin: 50px auto;
+  max-width: 780px;
+  padding: 30px;
+  background: #fdfdfe;
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.polls-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.25);
+}
+
+/* Title */
+.polls-title {
+  text-align: center;
+  font-size: 38px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 45px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+  letter-spacing: 1px;
+}
+
+/* Poll Card */
+.poll-card {
+  background: linear-gradient(145deg, #ffecd2, #fcb69f);
+  padding: 25px;
+  margin-bottom: 28px;
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.poll-card:hover {
+  transform: translateY(-6px) rotateX(2deg);
+  box-shadow: 0 16px 35px rgba(0,0,0,0.25);
+}
+
+/* Poll Question */
+.poll-question {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1e293b;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Option Row */
+.option {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  position: relative;
+  padding: 5px 10px;
+  border-radius: 12px;
+  transition: background 0.3s ease;
+}
+
+.option input[type="radio"] {
+  margin-right: 12px;
+  accent-color: #6366f1;
+  cursor: pointer;
+}
+
+.option label {
+  font-size: 16px;
+  color: #111;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+/* Highlight selected option */
+.option input[type="radio"]:checked + label {
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+/* Option hover effect */
+.option:hover {
+  background: rgba(79, 70, 229, 0.08);
+}
+
+/* Vote Bar Container */
+.vote-bar-container {
+  background: #e0e0e0;
+  border-radius: 12px;
+  height: 14px;
+  margin-top: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Vote Bar */
+.vote-bar {
+  height: 14px;
+  border-radius: 12px;
+  transition: width 0.6s ease, background 0.4s ease;
+}
+
+/* Animated gradient for vote bar */
+.vote-bar.blue {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+}
+
+.vote-bar.green {
+  background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+.vote-bar.red {
+  background: linear-gradient(90deg, #ef4444, #f87171);
+}
+
+/* Vote Count Badge */
+.vote-count {
+  position: absolute;
+  right: 10px;
+  top: -2px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  background: rgba(0,0,0,0.35);
+  padding: 2px 6px;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+/* Vote Button */
+.vote-btn {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  margin-top: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  box-shadow: 0 5px 15px rgba(245, 158, 11, 0.35);
+  transition: all 0.3s ease;
+}
+
+.vote-btn:hover {
+  background: linear-gradient(135deg, #d97706, #f59e0b);
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.55);
+}
+
+.vote-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+/* Glow Animation for Button */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 5px #f59e0b; }
+  50% { box-shadow: 0 0 20px #fbbf24; }
+  100% { box-shadow: 0 0 5px #f59e0b; }
+}
+
+.vote-btn.glow {
+  animation: pulseGlow 1.8s infinite;
+}
+
+/* No Polls Message */
+.no-polls {
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+  color: #6b7280;
+  margin-top: 40px;
+  letter-spacing: 0.5px;
+}
+
+/* Rounded vote percentage */
+.vote-percentage {
+  font-size: 14px;
+  font-weight: bold;
+  color: #111;
+  margin-left: 6px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .polls-container {
+    padding: 20px;
+  }
+
+  .polls-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .poll-question {
+    font-size: 20px;
+  }
+
+  .option label {
+    font-size: 15px;
+  }
+
+  .vote-btn {
+    padding: 8px 16px;
+  }
+}

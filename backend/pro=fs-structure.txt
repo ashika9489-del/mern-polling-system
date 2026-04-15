@@ -1,0 +1,39 @@
+this is my mern-polling-system/
+│
+├── backend/                      # Node.js + Express backend
+│   ├── models/                   # MongoDB models (Mongoose schemas)
+│   │   ├── User.js               # User schema (username, email, password)
+│   │   └── Poll.js               # Poll schema (question, options, createdBy, votes)
+│   │
+│   ├── routes/                   # API routes
+│   │   ├── register.js           # Register new users
+│   │   ├── login.js              # Login users
+│   │   └── polls.js              # Poll creation, fetching, voting
+│   │
+│   ├── middleware/               # Custom middleware
+│   │   └── auth.js               # JWT authentication
+│   │
+│   ├── server.js                 # Entry point for backend server
+│   └── .env                      # Environment variables (DB URI, JWT_SECRET)
+│
+├── frontend/                     # React frontend
+│   ├── public/
+│   │   └── index.html            # Main HTML page
+│   │
+│   ├── src/
+│   │   ├── components/           # React components
+│   │   │   ├── Register.js       # Registration page
+│   │   │   ├── Login.js          # Login page
+│   │   │   ├── PollList.js       # Show all polls
+│   │   │   ├── CreatePoll.js     # Create new poll (admin)
+│   │   │   ├── PollDetail.js     # Poll details & voting
+│   │   │   └── Navbar.js         # Navigation bar with login/logout
+│   │   │
+│   │   ├── App.js                # Main React app with routing
+│   │   ├── App.css               # Global styles
+│   │   └── index.js              # React DOM rendering
+│   │
+│   └── package.json              # Frontend dependencies
+│
+├── package.json                  # Backend dependencies
+└── README.md don;t change my file structure

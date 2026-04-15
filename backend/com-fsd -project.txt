@@ -1,0 +1,6 @@
+npm install express mongoose bcryptjs jsonwebtoken cors dotenv
+Downloads\mern-polling-system\backend
+npm start
+Downloads\mern-polling-system\frontend
+npm install nodemon --save-dev
+npm run dev

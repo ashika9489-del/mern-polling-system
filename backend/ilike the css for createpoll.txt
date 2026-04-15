@@ -1,0 +1,116 @@
+// src/components/CreatePoll.js
+import React, { useState } from "react";
+import "./CreatePoll.css";
+
+const CreatePoll = () => {
+  const [question, setQuestion] = useState("");
+  const [options, setOptions] = useState(["", ""]);
+  const [message, setMessage] = useState("");
+
+  const addOption = () => {
+    if (options.length >= 6) {
+      setMessage("⚠️ Maximum 6 options allowed!");
+      return;
+    }
+    setOptions([...options, ""]);
+  };
+
+  const removeOption = (index) => {
+    if (options.length <= 2) {
+      setMessage("⚠️ At least 2 options are required!");
+      return;
+    }
+    const updated = options.filter((_, i) => i !== index);
+    setOptions(updated);
+  };
+
+  const handleChange = (index, value) => {
+    const updated = [...options];
+    updated[index] = value;
+    setOptions(updated);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!question.trim() || options.some((opt) => !opt.trim())) {
+      setMessage("⚠️ Please enter a question and valid options!");
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem("token");
+      const res = await fetch("http://localhost:5000/api/polls", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ question, options }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setMessage("✅ Poll created successfully!");
+        setQuestion("");
+        setOptions(["", ""]);
+      } else {
+        setMessage(data.message || "❌ Server error while creating poll.");
+      }
+    } catch (err) {
+      console.error("❌ Server error:", err);
+      setMessage("Server error while creating poll.");
+    }
+  };
+
+  return (
+    <div className="create-poll-container">
+      <h2>🗳️ Create a New Poll</h2>
+      <form onSubmit={handleSubmit} className="create-poll-form">
+        <input
+          type="text"
+          placeholder="Enter your poll question"
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+        />
+
+        {options.map((opt, index) => (
+          <div key={index} className="option-row">
+            <input
+              type="text"
+              placeholder={`Option ${index + 1}`}
+              value={opt}
+              onChange={(e) => handleChange(index, e.target.value)}
+            />
+            <button
+              type="button"
+              className="remove-option-btn"
+              onClick={() => removeOption(index)}
+            >
+              ❌
+            </button>
+          </div>
+        ))}
+
+        <div className="button-row">
+          <button
+            type="button"
+            className="add-option-btn"
+            onClick={addOption}
+          >
+            ➕ Add Option
+          </button>
+
+          <button type="submit" className="create-btn">
+            ✅ Create Poll
+          </button>
+        </div>
+
+        {message && <p className="message">{message}</p>}
+      </form>
+    </div>
+  );
+};
+
+export default CreatePoll;

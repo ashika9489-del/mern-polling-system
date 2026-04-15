@@ -1,0 +1,112 @@
+// frontend/src/components/PollDetail.js
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import "./poll.css";
+
+const PollDetail = () => {
+  const { id } = useParams();
+  const [poll, setPoll] = useState(null);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [message, setMessage] = useState("");
+
+  // ✅ Fetch single poll details
+  useEffect(() => {
+    const fetchPoll = async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/api/polls/${id}`);
+        const data = await res.json();
+        setPoll(data);
+      } catch (err) {
+        console.error("❌ Error fetching poll:", err);
+      }
+    };
+    fetchPoll();
+  }, [id]);
+
+  // ✅ Handle voting
+  const handleVote = async () => {
+    if (!selectedOption) {
+      setMessage("⚠️ Please select an option!");
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        setMessage("⚠️ Please log in to vote.");
+        return;
+      }
+
+      const optionIndex = poll.options.findIndex(
+        (opt) => opt._id === selectedOption
+      );
+
+      const res = await fetch(`http://localhost:5000/api/polls/${poll._id}/vote`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ optionIndex }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setMessage("✅ Vote submitted successfully!");
+        setPoll(data); // updated poll data returned from backend
+      } else {
+        setMessage(data.message || "❌ Failed to vote.");
+      }
+    } catch (err) {
+      console.error("❌ Vote error:", err);
+      setMessage("Server error while voting.");
+    }
+  };
+
+  if (!poll) return <p className="loading">Loading poll...</p>;
+
+  const totalVotes =
+    poll.options?.reduce((acc, opt) => acc + (opt.votes || 0), 0) || 0;
+
+  return (
+    <div className="poll-detail-container">
+      <h2>{poll.question}</h2>
+
+      <div className="poll-options">
+        {poll.options?.map((option) => (
+          <label key={option._id} className="poll-option">
+            <input
+              type="radio"
+              name="vote"
+              value={option._id}
+              onChange={(e) => setSelectedOption(e.target.value)}
+            />
+            {option.text}
+          </label>
+        ))}
+      </div>
+
+      <button onClick={handleVote} className="vote-button">
+        Vote
+      </button>
+
+      {message && <p className="message">{message}</p>}
+
+      <h3>Results</h3>
+      <ul className="results">
+        {poll.options?.map((option) => (
+          <li key={option._id}>
+            <strong>{option.text}</strong> — {option.votes || 0} votes (
+            {totalVotes > 0
+              ? ((option.votes / totalVotes) * 100).toFixed(1)
+              : 0}
+            %)
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default PollDetail;
