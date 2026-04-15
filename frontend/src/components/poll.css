@@ -1,0 +1,128 @@
+.poll-detail-container {
+  max-width: 650px;
+  margin: 50px auto;
+  background: linear-gradient(145deg, #ffffff, #f3f4ff);
+  border-radius: 16px;
+  padding: 35px;
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.poll-detail-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.3);
+}
+
+.poll-detail-container h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #5a3eff; /* bright lavender */
+  margin-bottom: 25px;
+  text-shadow: 0 1px 4px rgba(90, 62, 255, 0.2);
+}
+
+.poll-options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 25px;
+}
+
+.poll-option {
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f9f9ff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.poll-option:hover {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  transform: scale(1.02);
+}
+
+input[type="radio"] {
+  accent-color: #5a3eff; /* custom radio button color */
+  cursor: pointer;
+}
+
+.vote-button {
+  background: linear-gradient(135deg, #5a3eff, #9c27b0);
+  color: #fff;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(156, 39, 176, 0.3);
+}
+
+.vote-button:hover {
+  background: linear-gradient(135deg, #7b2ff7, #c471ed);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(123, 47, 247, 0.4);
+}
+
+.message {
+  margin-top: 14px;
+  text-align: center;
+  color: #06b6d4; /* teal info color */
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.results {
+  margin-top: 30px;
+  list-style: none;
+  padding: 0;
+}
+
+.results li {
+  background: linear-gradient(135deg, #f3e8ff, #e0f7fa);
+  margin-bottom: 10px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #333;
+  font-weight: 500;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s;
+}
+
+.results li:hover {
+  transform: translateX(5px);
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 60px;
+  color: #6a11cb;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .poll-detail-container {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .vote-button {
+    width: 100%;
+  }
+}

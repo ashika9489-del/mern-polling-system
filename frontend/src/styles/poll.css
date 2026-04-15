@@ -1,0 +1,86 @@
+/* poll.css - PollList, PollDetail, CreatePoll shared styles */
+.poll-list, .poll-detail-container, .poll-create-container {
+  max-width:800px;
+  margin: 24px auto;
+  padding: 22px;
+  background: #fff;
+  border-radius:12px;
+  box-shadow: 0 8px 30px rgba(20,20,50,0.05);
+}
+
+.poll-list h2, .poll-detail-container h2, .poll-create-container h2 {
+  margin:0 0 16px;
+  font-size:1.35rem;
+  color:#182028;
+}
+
+/* Poll list cards */
+.poll-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap:18px;
+}
+.poll-card{
+  background: linear-gradient(180deg,#fbfbff, #ffffff);
+  border-radius:10px;
+  padding:14px;
+  border:1px solid rgba(10,10,20,0.03);
+}
+.poll-card h3{ margin:0 0 6px; font-size:1.05rem }
+.poll-card p{ margin:0 0 10px; color:var(--muted) }
+.view-btn, .vote-btn {
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:8px;
+  text-decoration:none;
+  color:white;
+  background:var(--primary);
+  font-weight:600;
+}
+
+/* Create poll form */
+.poll-form {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.poll-form input[type="text"]{
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #e6e9ee;
+  font-size:1rem;
+}
+.add-option-btn, .create-poll-btn {
+  padding:10px 14px;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
+}
+.add-option-btn { background:transparent; color:var(--primary); border:1px dashed rgba(99,102,241,0.15) }
+.create-poll-btn { background:var(--primary); color:white }
+
+/* Poll detail - options and results */
+.poll-options { display:flex; flex-direction:column; gap:10px; margin-bottom:14px }
+.poll-option {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid rgba(10,10,20,0.03);
+}
+.vote-button { background:var(--primary); color:#fff; border:none; padding:10px 14px; border-radius:8px; cursor:pointer }
+
+/* Results list */
+.results { list-style:none; padding:0; margin-top:16px; display:flex; flex-direction:column; gap:8px }
+.results li{ padding:8px; background:#f8f9ff; border-radius:8px }
+
+/* small helpers */
+.loading, .message, .no-polls { text-align:center; color:var(--muted) }
+
+/* responsive */
+@media (max-width:520px){
+  .poll-form input[type="text"]{ font-size:0.95rem }
+  .poll-grid { grid-template-columns: 1fr }
+}

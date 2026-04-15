@@ -1,0 +1,285 @@
+/* ===========================
+   Container
+=========================== */
+.polls-container {
+  margin: 50px auto;
+  max-width: 780px;
+  padding: 30px;
+  background: #fefefe;
+  border-radius: 24px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.polls-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ===========================
+   Title
+=========================== */
+.polls-title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 50px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1.2px;
+}
+
+/* ===========================
+   Poll Card
+=========================== */
+.poll-card {
+  background: linear-gradient(145deg, #fffaed, #ffe1d6);
+  padding: 28px 25px;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.poll-card:hover {
+  transform: translateY(-6px) rotateX(1.5deg);
+  box-shadow: 0 18px 38px rgba(0,0,0,0.22);
+}
+
+/* ===========================
+   Poll Question
+=========================== */
+.poll-question {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 22px;
+  color: #1e293b;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* ===========================
+   Option Container
+=========================== */
+.option {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border-radius: 14px;
+  position: relative;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.option:hover {
+  background: rgba(59, 130, 246, 0.08);
+  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.15);
+}
+
+/* ===========================
+   Radio Buttons Hidden
+=========================== */
+.option input[type="radio"] {
+  display: none;
+}
+
+/* ===========================
+   Custom Radio Design
+=========================== */
+.option label {
+  position: relative;
+  padding-left: 40px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #111;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+/* Outer circle */
+.option label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  border: 2px solid #3b82f6;
+  border-radius: 50%;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+/* Inner circle for selected option */
+.option input[type="radio"]:checked + label::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3b82f6;
+  transition: all 0.3s ease;
+}
+
+/* Selected option text */
+.option input[type="radio"]:checked + label {
+  color: #1e40af;
+  font-weight: 600;
+}
+
+/* Glow effect for selected */
+.option input[type="radio"]:checked + label::before {
+  box-shadow: 0 0 10px rgba(59,130,246,0.4);
+}
+
+/* ===========================
+   Vote Bar
+=========================== */
+.vote-bar-container {
+  background: #e5e7eb;
+  border-radius: 14px;
+  height: 16px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 6px;
+}
+
+.vote-bar {
+  height: 16px;
+  border-radius: 14px;
+  transition: width 0.6s ease, background 0.4s ease;
+}
+
+.vote-bar.blue {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+}
+
+.vote-bar.green {
+  background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+.vote-bar.red {
+  background: linear-gradient(90deg, #ef4444, #f87171);
+}
+
+/* Vote Count Badge */
+.vote-count {
+  position: absolute;
+  right: 12px;
+  top: -4px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  background: rgba(0,0,0,0.35);
+  padding: 2px 6px;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+/* ===========================
+   Vote Button
+=========================== */
+.vote-btn {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  margin-top: 15px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35);
+  transition: all 0.3s ease;
+}
+
+.vote-btn:hover {
+  background: linear-gradient(135deg, #d97706, #f59e0b);
+  transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.55);
+}
+
+.vote-btn:active {
+  transform: scale(0.97);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.vote-btn.glow {
+  animation: pulseGlow 1.8s infinite;
+}
+
+/* ===========================
+   No Polls Message
+=========================== */
+.no-polls {
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+  color: #6b7280;
+  margin-top: 40px;
+  letter-spacing: 0.5px;
+}
+
+/* ===========================
+   Vote Percentage
+=========================== */
+.vote-percentage {
+  font-size: 14px;
+  font-weight: bold;
+  color: #111;
+  margin-left: 6px;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+@media screen and (max-width: 768px) {
+  .polls-container {
+    padding: 22px;
+  }
+
+  .polls-title {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+
+  .poll-question {
+    font-size: 20px;
+  }
+
+  .option label {
+    font-size: 15px;
+  }
+
+  .vote-btn {
+    padding: 10px 16px;
+  }
+
+  .vote-bar-container {
+    height: 12px;
+  }
+
+  .vote-bar {
+    height: 12px;
+  }
+}
+
+/* ===========================
+   Extra Animations
+=========================== */
+/* Pulse hover for poll card */
+.poll-card:hover {
+  animation: pulseCard 1.2s ease;
+}
+
+@keyframes pulseCard {
+  0% { transform: translateY(-6px) rotateX(0deg);}
+  50% { transform: translateY(-4px) rotateX(1deg);}
+  100% { transform: translateY(-6px) rotateX(1.5deg);}
+}

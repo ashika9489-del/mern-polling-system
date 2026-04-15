@@ -1,0 +1,153 @@
+/* 🌌 App.css — Mystic Lavender Dark Universe Theme */
+:root {
+  --primary: #b38bfa;          /* Soft lavender glow */
+  --primary-dark: #6a11cb;     /* Deep violet */
+  --accent: #8b5cf6;           /* Bright lavender accent */
+  --muted: #1a1525;            /* Deep background */
+  --card-bg: rgba(34, 26, 53, 0.9); /* Glassy card with depth */
+  --text-light: #e8dcff;       /* Soft light text */
+  --page-bg: linear-gradient(135deg, #0f051d, #2b124c, #1b0f2b);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", "Inter", system-ui, sans-serif;
+  background: var(--page-bg);
+  background-size: 300% 300%;
+  animation: glowShift 12s ease-in-out infinite;
+  color: var(--text-light);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes glowShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 💫 Main Content Wrapper */
+.main-content {
+  max-width: 1150px;
+  margin: 30px auto;
+  padding: 20px;
+  animation: fadeInBody 1.2s ease-in-out;
+}
+
+@keyframes fadeInBody {
+  from { opacity: 0; transform: scale(1.03); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* 🌈 Fancy Container Card */
+.container-card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(179, 139, 250, 0.3);
+  padding: 28px;
+  border: 1px solid rgba(179, 139, 250, 0.25);
+  backdrop-filter: blur(12px);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ✨ Animated Border Glow */
+.container-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  padding: 2px;
+  background: linear-gradient(135deg, #b38bfa, #6a11cb, #8b5cf6);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.container-card:hover::before {
+  opacity: 1;
+}
+
+.container-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 14px 35px rgba(179, 139, 250, 0.45);
+}
+
+/* 💜 Buttons — Soft Glow */
+.btn {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  color: #fff;
+  border: none;
+  padding: 13px 20px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 15px rgba(179, 139, 250, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #8e2de2, #4a00e0);
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 24px rgba(179, 139, 250, 0.6);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* 🌟 Link Effects */
+.link-like {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.link-like:hover {
+  color: #d4b8ff;
+  text-shadow: 0 0 10px rgba(179, 139, 250, 0.8);
+}
+
+/* 🌠 Floating Effect */
+.glow-on-hover {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.glow-on-hover:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 0 25px rgba(179, 139, 250, 0.6);
+}
+
+/* 💬 Headings */
+h1, h2, h3 {
+  background: linear-gradient(90deg, #b38bfa, #6a11cb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(179, 139, 250, 0.4);
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .container-card {
+    padding: 20px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 14px;
+  }
+}
